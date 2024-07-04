@@ -1,8 +1,6 @@
 <script setup>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
-import {Head, router, useForm, Link, usePage} from '@inertiajs/vue3';
-import {useToast} from "vue-toastification";
-import {watch} from "vue";
+import {Head, router, useForm, Link } from '@inertiajs/vue3';
 
 const props = defineProps({
     posts: {
@@ -15,20 +13,6 @@ const props = defineProps({
         type: Object,
     }
 })
-
-const toast = useToast();
-const page = usePage()
-
-watch(
-    () => page.props.message,
-    (message) => {
-        if (message) {
-            toast(message.body, {
-                type: message.type,
-            });
-        }
-    }
-)
 
 const form = useForm('StorePost', {
     body: "",
